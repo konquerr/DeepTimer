@@ -10,28 +10,43 @@ def main():
     start_time = None
 
     while True:
-        print("===== DEEPTIMER =====")
+        print("\n===== DEEPTIMER =====")
         print("1. Start coding session")
         print("2. End coding session")
         print("3. Exit")
 
-        choice = input("Select an option:")
+        choice = input("\nSelect an option: ")
 
         if choice == "1":
             # TODO: Implement the logic to start a coding session
-            print("Start session selected.")
-        
+            if start_time != None:
+                    print("Already running timer!")
+                    continue
+            print("\nStart session selected.")
+            start_time = t.time()
+            
+
+
         elif choice == "2":
             # TODO: Implement the logic to end a coding session
-            print("End session selected.")
-        
+            print("\nEnd session selected.")
+
+            if start_time == None:
+                print("\nThere are no sessions active!")
+
+            
+            if start_time != None:
+                end_time = t.time()
+                duration = int(end_time - start_time)
+                print(f"You were locked in for {duration}s")
+                start_time = None
+
         elif choice == "3":
-            print("Exiting...")
+            print("\nExiting...")
             break
 
         else:
-            print("Invalid option. Please try again.")
-
+            print("\nInvalid option. Please try again.")
 
 if __name__ == "__main__":
     main()
